@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 
@@ -17,7 +18,31 @@ namespace Logic.Tests
         }
 
         [Test]
-        public void Double_numbers_When_Method_execute_Then_get_double_value()
+        public void DoubleSum_When_try_doubleSum_null_value_Then_return_System_ArgumentNullException()
+        {
+            // Arrange
+            IEnumerable<int> i = null;
+
+            // Assert
+            Assert.Throws(typeof(ArgumentNullException), () => new AlgoService().DoubleSum(i));
+        }
+
+        [Test]
+        public void DoubleSum_When_try_doubleSum_empty_list_Then_return_0_value()
+        {
+            //Arrange
+            int expectedValue = 0;
+            IEnumerable<int> i = new List<int> { };
+
+            ////Act
+            int doubleValue = _algoService.DoubleSum(i);
+
+            //Assert
+            Assert.That(doubleValue, Is.EqualTo(expectedValue));
+        }
+
+        [Test]
+        public void DoubleSum_When_method_execute_Then_return_correct_double_value()
         {
             // Arrange
             int expectedValue = 330;
@@ -32,7 +57,27 @@ namespace Logic.Tests
         }
 
         [Test]
-        public void MinValue_When_Method_execute_Then_get_minimum_value()
+        public void MinValue_When_minValue_null_value_Then_return_System_ArgumentNullException()
+        {
+            // Arrange
+            IEnumerable<int> i = null;
+
+            // Assert
+            Assert.Throws(typeof(ArgumentNullException), () => new AlgoService().MinValue(i));
+        }
+
+        [Test]
+        public void MinValue_When_minValue_empty_list_Then_return_System_InvalidOperationException()
+        {
+            //Arrange
+            IEnumerable<int> i = new List<int> { };
+
+            //Assert
+            Assert.Throws(typeof(InvalidOperationException), () => new AlgoService().MinValue(i));
+        }
+
+        [Test]
+        public void MinValue_When_Method_execute_Then_return_minimum_value()
         {
             // Arrange
             int expectedValue = 9;
@@ -47,22 +92,31 @@ namespace Logic.Tests
         }
 
         [Test]
-        public void Function_When_Method_execute_Then_get_correct_result()
+        public void Function_When_passing_nagative_parameter_Then_return_not_a_number()
         {
             // Arrange
-            double expectedValue = 108.7718968139325;
-            int a = 5, c = 7;
-            double d = 4.7, b = 91.5;
+            int a = 10, c = 10;
+            double d = 10, b = -100;
 
             // Act
             var doubleValue = _algoService.Function(a, b, c, d);
 
             // Assert
-            Assert.That(doubleValue, Is.EqualTo(expectedValue));
+            Assert.IsNaN(doubleValue);
         }
 
         [Test]
-        public void GetAverage_When_Method_execute_Then_get_Average_value()
+        public void GetAverage_When_average_empty_list_Then_return_System_InvalidOperationException()
+        {
+            //Arrange
+            IEnumerable<int> i = new List<int> { };
+
+            //Assert
+            Assert.Throws(typeof(InvalidOperationException), () => new AlgoService().GetAverage(i));
+        }
+
+        [Test]
+        public void GetAverage_When_method_execute_Then_return_correct_average_result()
         {
             // Arrange
             double expectedValue = 21.25;
@@ -77,7 +131,21 @@ namespace Logic.Tests
         }
 
         [Test]
-        public void Math_Pow_value_When_Method_execute_Then_get_correct_result()
+        public void Math_Pow_maximum_integer_value_When_Method_execute_Then_return_correct_double_value()
+        {
+            // Arrange
+            double expectedValue = double.MaxValue;
+            int data = int.MaxValue;
+
+            // Act
+            var value = _algoService.Sqr(data);
+
+            // Assert
+            Assert.Less(value, expectedValue);
+        }
+
+        [Test]
+        public void Math_Pow_value_When_Method_execute_Then_return_correct_result()
         {
             // Arrange
             int expectedValue = 10000;
