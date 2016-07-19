@@ -6,7 +6,7 @@ namespace Logic.Tests
     [TestFixture]
     class DataServiceTests
     {
-        IDataService _dataService;
+        private IDataService _dataService;
         int capacity = 10;
 
         //This method run before executing any of the tests in a fixture

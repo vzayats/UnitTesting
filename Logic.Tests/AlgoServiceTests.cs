@@ -8,7 +8,7 @@ namespace Logic.Tests
     [TestFixture]
     class AlgoServiceTests
     {
-        IAlgoService _algoService;
+        private IAlgoService _algoService;
 
         //This method run before executing any of the tests in a fixture
         [OneTimeSetUp]

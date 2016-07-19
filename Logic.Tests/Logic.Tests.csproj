@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="AlgoServiceTests.cs" />
     <Compile Include="DataServiceTests.cs" />
+    <Compile Include="MasterServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
