@@ -32,7 +32,7 @@ namespace Logic.Tests
         {
             //Arrange
             int expectedValue = 0;
-            IEnumerable<int> i = new List<int> { };
+            IEnumerable<int> i = new List<int>();
 
             ////Act
             int doubleValue = _algoService.DoubleSum(i);
@@ -70,7 +70,7 @@ namespace Logic.Tests
         public void MinValue_When_minValue_empty_list_Then_return_System_InvalidOperationException()
         {
             //Arrange
-            IEnumerable<int> i = new List<int> { };
+            IEnumerable<int> i = new List<int>();
 
             //Assert
             Assert.Throws(typeof(InvalidOperationException), () => new AlgoService().MinValue(i));
@@ -99,17 +99,17 @@ namespace Logic.Tests
             double d = 10, b = -100;
 
             // Act
-            var doubleValue = _algoService.Function(a, b, c, d);
+            var result = _algoService.Function(a, b, c, d);
 
             // Assert
-            Assert.IsNaN(doubleValue);
+            Assert.IsNaN(result);
         }
 
         [Test]
         public void GetAverage_When_average_empty_list_Then_return_System_InvalidOperationException()
         {
             //Arrange
-            IEnumerable<int> i = new List<int> { };
+            IEnumerable<int> i = new List<int>();
 
             //Assert
             Assert.Throws(typeof(InvalidOperationException), () => new AlgoService().GetAverage(i));
